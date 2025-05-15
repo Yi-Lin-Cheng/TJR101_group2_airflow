@@ -20,9 +20,6 @@ TJR101_group2_airflow/         # Airflow project folder (scheduling & orchestrat
 
 TJR101_group2/                 # ETL source project (main data processing logic)
 ├── src/                       # All data processing code (ETL modules, utils, etc.)
-│   ├── cafe/                  # Modules for processing cafe-related data
-│   ├── hotel/                 # Modules for processing hotel-related data
-│   └── utils/                 # Shared utility functions
 ├── data/                      # Raw data, intermediate files, and error logs
 └── poetry.lock                # Locked dependencies for the ETL codebase (Poetry)
 ```
