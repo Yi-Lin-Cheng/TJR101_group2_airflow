@@ -35,7 +35,7 @@ WORKDIR /opt/project
 RUN poetry config virtualenvs.create false && \
     poetry install --no-root --no-interaction --no-ansi && \
     rm -rf ~/.cache/pip
-# ✅ 改成顯式用 python3.12 執行 pip（最穩定）
+# 改成顯式用 python3.12 執行 pip（最穩定）
 RUN python3.12 -m pip install --no-cache-dir pendulum
 
 USER airflow
