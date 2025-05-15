@@ -67,8 +67,8 @@ In docker-compose.yaml, replace:
 ```yaml
 # image: apache/airflow:2.10.5
 build:
-  context: ..
-  dockerfile: airflow/Dockerfile
+  context: .
+  dockerfile: Dockerfile
 image: airflow-poetry:TJR101_group2
 ```
 
