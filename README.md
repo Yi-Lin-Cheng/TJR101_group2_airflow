@@ -28,6 +28,15 @@ TJR101_group2/                 # ETL source project (main data processing logic)
 
 ## 🛠️ Setup Instructions
 
+### Install Docker Compose (for Ubuntu)
+
+Install Docker Engine on Ubuntu
+https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+
+Install the Docker Compose plugin
+https://docs.docker.com/compose/install/linux/#install-using-the-repository
+
+
 ### Step 1: Create or clone the Airflow project directory
 
 ```bash
@@ -46,7 +55,7 @@ echo "PYTHONPATH=/opt/airflow/../src" >> .env  # Optional: to allow DAGs to impo
 ### Step 3: Download the official docker-compose.yaml
 
 ```bash
-curl -LfO 'https://airflow.apache.org/docs/apache-airflow/3.0.0/docker-compose.yaml'
+curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.10.5/docker-compose.yaml'
 ```
 
 ### Step 4: Modify docker-compose.yaml (volume mount paths)
@@ -72,7 +81,7 @@ build:
 image: airflow-poetry:TJR101_group2
 ```
 
-Then create Dockerfile:
+Then create or update your Dockerfile with the following content:
 
 ```dockerfile
 FROM apache/airflow:2.10.5
