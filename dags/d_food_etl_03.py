@@ -26,7 +26,6 @@ default_args = {
     schedule_interval="0 2 * * 6",
     start_date=pendulum.datetime(2025, 5, 1, tz="Asia/Taipei"),
     catchup=False,
-    default_args=default_args,
     tags=["food", "etl", "mysql", "google"],
 )
 def d_food_etl_03():

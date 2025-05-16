@@ -26,7 +26,6 @@ default_args = {
     schedule_interval="0 2 * * 4",
     start_date=pendulum.datetime(2025, 5, 1, tz="Asia/Taipei"),
     catchup=False,
-    default_args=default_args,
     tags=["spot", "etl", "mysql", "google"],
 )
 def d_spot_etl_03():
