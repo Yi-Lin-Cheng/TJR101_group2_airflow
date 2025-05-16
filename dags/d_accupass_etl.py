@@ -21,6 +21,7 @@ with DAG(
     default_args=default_args,
     description="Accupass etl",
     schedule_interval="* * * * 1",
+    start_date=datetime(2025, 5, 10),
     catchup=False,
     tags=["crawler", "clean", "to_mySQL"]
 ) as dag:
