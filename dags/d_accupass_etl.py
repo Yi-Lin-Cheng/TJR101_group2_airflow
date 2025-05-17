@@ -2,9 +2,9 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
 
-from accupass.e_accupass_crawler import e_accupass_crawler
-from accupass.t_accupass_data_clean import t_accupass_data_clean
-from accupass.l_accupass_mysql_con import l_accupass_mysql_con
+from accupass.e01_accupass_crawler import e_accupass_crawler
+from accupass.t01_accupass_data_clean import t_accupass_data_clean
+from accupass.l01_accupass_mysql_con import l_accupass_mysql_con
 
 default_args = {
     "owner": "airflow",
@@ -19,8 +19,8 @@ default_args = {
 with DAG(
     dag_id="d_accupass_etl",
     default_args=default_args,
-    description="Accupass etl",
-    schedule_interval="* * * * 1",
+    description="ETL: extract accupass data, clean it, and load to MySQL.",
+    schedule_interval="30 12 * * 7",
     start_date=datetime(2025, 5, 10),
     catchup=False,
     tags=["crawler", "clean", "to_mySQL"]
