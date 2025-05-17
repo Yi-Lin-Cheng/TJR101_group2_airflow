@@ -4,8 +4,7 @@ import pendulum
 from airflow.decorators import dag, task
 from airflow.models import Variable
 
-from spot import (e03_craw_googlemap_info, l01_insert_into_and_update_mysql,
-                  t03_clean_openhours_name)
+from accomo import (e03_update_rate, l02_update_rate)
 from utils.airflow_notify import line_notify_failure
 
 default_args = {
@@ -21,25 +20,23 @@ default_args = {
 
 
 @dag(
-    dag_id="d_spot_etl_03",
+    dag_id="d_accomo_etl_02",
     default_args=default_args,
-    description="ETL: extract Google Map data, clean it, and load to MySQL.",
-    schedule_interval="0 2 * * 4",
+    description="Update data from Booking.com.",
+    schedule_interval="0 2 * * 2",
     start_date=pendulum.datetime(2025, 5, 1, tz="Asia/Taipei"),
     catchup=False,
-    tags=["spot", "etl", "mysql", "google"],
+    tags=["accomo", "booking", "mysql"],
 )
-def d_spot_etl_03():
+def d_accomo_etl_02():
     @task
-    def extract_googlemap():
-        e03_craw_googlemap_info()
-    @task
-    def clean_openhours_name():
-        t03_clean_openhours_name()
+    def update_rate():
+        e03_update_rate()
     @task
     def load_mysql():
-        l01_insert_into_and_update_mysql()
+        l02_update_rate()
 
-    extract_googlemap() >> clean_openhours_name() >> load_mysql()
+    update_rate >> load_mysql
 
-d_spot_etl_03()
+
+d_accomo_etl_02()

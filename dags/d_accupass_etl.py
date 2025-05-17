@@ -1,19 +1,23 @@
-from airflow import DAG
-from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
 
+
+from airflow import DAG
+from airflow.operators.python import PythonOperator
+
 from accupass.e01_accupass_crawler import e_accupass_crawler
-from accupass.t01_accupass_data_clean import t_accupass_data_clean
 from accupass.l01_accupass_mysql_con import l_accupass_mysql_con
+from accupass.t01_accupass_data_clean import t_accupass_data_clean
+from utils.airflow_notify import line_notify_failure
 
 default_args = {
     "owner": "airflow",
     "depends_on_past": False,
-    "email": ["your_email@example.com"],
-    "email_on_failure": False,
+    "email": [Variable.get("EMAIL")],
+    "email_on_failure": True,
     "email_on_retry": False,
     "retries": 3,
     "retry_delay": timedelta(minutes=5),
+    "on_failure_callback": line_notify_failure,
 }
 
 with DAG(
@@ -23,7 +27,7 @@ with DAG(
     schedule_interval="30 12 * * 7",
     start_date=datetime(2025, 5, 10),
     catchup=False,
-    tags=["crawler", "clean", "to_mySQL"]
+    tags=["accupass", "etl", "mysql"]
 ) as dag:
 
     task1 = PythonOperator(
