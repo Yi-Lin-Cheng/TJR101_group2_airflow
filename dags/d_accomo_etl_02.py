@@ -36,7 +36,7 @@ def d_accomo_etl_02():
     def load_mysql():
         l02_update_rate()
 
-    update_rate >> load_mysql
+    update_rate() >> load_mysql()
 
 
 d_accomo_etl_02()
