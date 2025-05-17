@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 
 
 from airflow import DAG
+from airflow.models import Variable
 from airflow.operators.python import PythonOperator
 
 from accupass.e01_accupass_crawler import e_accupass_crawler
