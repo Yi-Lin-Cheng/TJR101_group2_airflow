@@ -24,7 +24,7 @@ default_args = {
     dag_id="d_spot_etl_03",
     default_args=default_args,
     description="ETL: extract Google Map data, clean it, and load to MySQL.",
-    schedule_interval="0 2 * * 4",
+    schedule_interval="0 2 * * 2,5",
     start_date=pendulum.datetime(2025, 5, 1, tz="Asia/Taipei"),
     catchup=False,
     tags=["spot", "etl", "mysql", "google"],

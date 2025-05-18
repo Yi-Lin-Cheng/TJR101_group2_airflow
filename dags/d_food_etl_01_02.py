@@ -24,7 +24,7 @@ default_args = {
     dag_id="d_food_etl_01_02",
     default_args=default_args,
     description="Extract and transform from open source and Google Place, then match and add new rows.",
-    schedule_interval="0 1 * * 6",
+    schedule_interval="0 1 * * 3,6",
     start_date=pendulum.datetime(2025, 5, 1, tz="Asia/Taipei"),
     catchup=False,
     tags=["food", "etl", "open_data", "google"],

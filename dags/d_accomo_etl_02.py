@@ -23,7 +23,7 @@ default_args = {
     dag_id="d_accomo_etl_02",
     default_args=default_args,
     description="Update data from Booking.com.",
-    schedule_interval="0 2 * * 2",
+    schedule_interval="0 2 * * 1,4",
     start_date=pendulum.datetime(2025, 5, 1, tz="Asia/Taipei"),
     catchup=False,
     tags=["accomo", "booking", "mysql"],
