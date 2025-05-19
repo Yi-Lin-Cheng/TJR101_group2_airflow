@@ -25,7 +25,7 @@ with DAG(
     dag_id="d_accupass_etl",
     default_args=default_args,
     description="ETL: extract accupass data, clean it, and load to MySQL.",
-    schedule_interval="30 00 * * 7",
+    schedule_interval="0 4 * * 0",
     start_date=datetime(2025, 5, 10),
     catchup=False,
     tags=["accupass", "etl", "mysql"]

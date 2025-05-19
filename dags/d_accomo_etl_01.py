@@ -26,7 +26,7 @@ default_args = {
     dag_id="d_accomo_etl_01",
     default_args=default_args,
     description="Extract and transform from open source and Booking.com, then match and add new rows.",
-    schedule_interval="0 1 * * 1,4",
+    schedule_interval="20 0 * * 0",
     start_date=pendulum.datetime(2025, 5, 1, tz="Asia/Taipei"),
     catchup=False,
     tags=["accomo", "etl", "open_data", "booking", "mysql"],

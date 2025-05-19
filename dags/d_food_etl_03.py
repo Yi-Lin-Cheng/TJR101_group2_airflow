@@ -24,7 +24,7 @@ default_args = {
     dag_id="d_food_etl_03",
     default_args=default_args,
     description="ETL: extract Google Map data, clean it, and load to MySQL.",
-    schedule_interval="0 2 * * 3,6",
+    schedule_interval="0 0 * * 3,6",
     start_date=pendulum.datetime(2025, 5, 1, tz="Asia/Taipei"),
     catchup=False,
     tags=["food", "etl", "mysql", "google"],
