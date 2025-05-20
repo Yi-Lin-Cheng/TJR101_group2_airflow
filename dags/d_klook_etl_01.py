@@ -119,6 +119,6 @@ with DAG(
 
     # Task dependencies
     # task_e_coordinate_obj
-    task_e_data_list_obj >> task_e_data_detail_obj >> task_t_address_obj >> task_e_coordinate_obj >> task_t_title_task_obj >> task_t_county_task_obj >> task_t_date_task_obj >> l_data_to_db_task
+    task_e_data_list_obj >> task_e_data_detail_obj >> task_t_address_obj >> task_e_coordinate_obj >> task_t_title_task_obj >> task_t_county_task_obj >> task_t_date_task_obj >> task_l_data_to_db_obj
 
     # task1_obj >> task2_obj
