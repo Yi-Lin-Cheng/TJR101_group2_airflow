@@ -13,7 +13,7 @@ from klook.e_coordinate import main as e_coordinate_task
 from klook.t_county import main as t_county_task
 from klook.t_date import main as t_date_task
 from klook.t_title import main as t_title_task
-
+from klook.l_data_to_db import main as l_data_to_db_task
 
 from utils.airflow_notify import line_notify_failure
 
@@ -68,8 +68,17 @@ with DAG(
         },       
         dag=dag,
     )
+    
+    task_l_data_to_db_obj = PythonOperator(
+        task_id='l_data_to_db_task',
+        python_callable=l_data_to_db_task,
+        op_kwargs={
+            'source_file': 'final_data.csv',
+        },       
+        dag=dag,
+    )    
 
 
     # Task dependencies
-    task_e_data_detail_obj >> task_t_address_obj >> task_e_coordinate_obj
+    task_e_data_detail_obj >> task_t_address_obj >> task_e_coordinate_obj >> task_l_data_to_db_obj
     # task1_obj >> task2_obj
